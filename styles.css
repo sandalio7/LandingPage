@@ -469,12 +469,206 @@ footer a {
     text-decoration: none;
 }
 
+.video{
+    width: 640px;
+    height: 360px;
+}
+
+/* Modificación para el video grande */
+.video-grande {
+    display: block;
+    margin: 40px auto;
+    width: 80%;
+    max-width: 900px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+#verde{
+    color: #008f45;
+    text-decoration: none;
+}
+
+#h2-compra{
+    color: #1d6d2d;
+    font-size: 50px;
+}
+
+/* Estilos mejorados para la sección de compra */
+.big-discount {
+    font-size: 5rem;
+    font-weight: 800;
+    margin: 10px auto;
+    line-height: 1;
+}
+
+.share-text {
+    font-size: 1.5rem;
+    margin: 25px auto;
+    max-width: 800px;
+    color: #333;
+}
+
+/* Contador regresivo */
+.countdown-container {
+    margin: 30px auto;
+    text-align: center;
+}
+
+.countdown-label {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.countdown {
+    background: linear-gradient(to right, #de0c0c, #f21111);
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 2rem;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Garantía y detalles */
+.purchase-details {
+    max-width: 700px;
+    margin: 30px auto;
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.guarantee i {
+    color: #00a651;
+    font-size: 2rem;
+    margin-right: 15px;
+}
+
+.guarantee p {
+    margin: 0;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Mejor presentación de la información de pago */
+.payment-info {
+    margin-top: 25px;
+    color: #666;
+}
+
+.payment-info i {
+    margin-right: 5px;
+}
+
+.payment-methods {
+    margin-top: 10px;
+}
+
+.payment-methods i {
+    font-size: 2rem;
+    margin: 0 8px;
+    color: #333;
+}
+
+/* Mejoras al botón de compra */
+.cta-btn {
+    padding: 18px 45px;
+    font-size: 1.5rem;
+    background-color: #00a651;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0, 166, 81, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-btn:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.cta-btn:hover:after {
+    left: 100%;
+}
+
+.cta-btn:hover {
+    background-color: #008f45;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 166, 81, 0.4);
+}
+
+/* Mejoras para responsive */
+@media (max-width: 768px) {
+    .big-discount {
+        font-size: 3.5rem;
+    }
+    
+    .share-text {
+        font-size: 1.2rem;
+    }
+    
+    .countdown {
+        font-size: 1.5rem;
+    }
+    
+    .purchase-details {
+        padding: 15px;
+    }
+    
+    .guarantee i {
+        font-size: 1.5rem;
+    }
+    
+    .payment-methods i {
+        font-size: 1.5rem;
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     section {
         padding: 40px 0;
     }
     
+    .video{
+        width: 90%;
+        height: 30%;
+    }
+
+    .video-grande {
+        width: 90%;
+        margin: 30% auto;
+    }
+
+    .video-grande{
+        width: 90%;
+        height: 30%;
+    }
+
     h1 {
         font-size: 2rem;
     }

@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Reemplaza esta URL con la URL de tu Web App de Google Apps Script después de publicarla
             const googleAppScriptUrl = 'https://script.google.com/macros/s/AKfycbxrEBPKjmA8o8XMRAObSlITU5MJIzpfDnkpPlGBng50naJnvRMEher-cgKmA-lJo4y93A/exec';
             
-            // URL de checkout a la que redirigir después
-            const checkoutURL = 'checkout.html';
+            // URL de checkout actualizada con la URL completa
+            const checkoutURL = 'https://digitalcareer.netlify.app/checkout.html';
             
             // Recopilar datos para enviar
             const datos = {
@@ -35,57 +35,91 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(function() {
                 console.log('Datos enviados correctamente');
-                // Redirigir a la página de checkout
-                window.location.href = checkoutURL;
+                
+                // Registrar el evento de clic en el botón para Google Ads (añadido)
+                if (typeof dataLayer !== 'undefined') {
+                    dataLayer.push({
+                        'event': 'purchase_button_click',
+                        'eventCategory': 'Conversion',
+                        'eventAction': 'Click',
+                        'eventLabel': 'Comprar Ahora'
+                    });
+                    console.log('Evento de clic registrado en dataLayer');
+                }
+                
+                // Redirigir a la página de checkout después de un breve retraso
+                setTimeout(function() {
+                    window.location.href = checkoutURL;
+                }, 300); // 300ms de retraso para asegurar que GTM registre el evento
             })
             .catch(function(error) {
                 console.error('Error al enviar los datos:', error);
-                // Aún así, redirigir a la página de checkout
-                window.location.href = checkoutURL;
+                // Aún así, registrar el evento y redirigir a la página de checkout
+                if (typeof dataLayer !== 'undefined') {
+                    dataLayer.push({
+                        'event': 'purchase_button_click',
+                        'eventCategory': 'Conversion',
+                        'eventAction': 'Click',
+                        'eventLabel': 'Comprar Ahora'
+                    });
+                }
+                setTimeout(function() {
+                    window.location.href = checkoutURL;
+                }, 300);
             });
         });
     }
 });
 
-// Script para el contador regresivo (si lo necesitas)
-function updateCountdown() {
-    const countdownEl = document.querySelector('.countdown');
+// Función para el temporizador
+function startCountdown() {
+    const countdownElement = document.getElementById('countdown-timer');
     
-    // Si no hay elemento countdown en la página, salir de la función
-    if (!countdownEl) return;
+    if (!countdownElement) return;
     
-    let parts = countdownEl.textContent.split(':');
-    let hours = parseInt(parts[0].split(' ')[3]);
-    let minutes = parseInt(parts[1]);
-    let seconds = parseInt(parts[2]);
+    // Comprobar si hay una fecha guardada en localStorage
+    let endTime = localStorage.getItem('countdownEndTime');
+    let now = new Date().getTime();
     
-    seconds--;
-    
-    if (seconds < 0) {
-        seconds = 59;
-        minutes--;
+    // Si no hay fecha guardada o ya ha pasado, creamos una nueva (24 horas desde ahora)
+    if (!endTime || now > parseInt(endTime)) {
+        endTime = now + (3 * 60 * 60 * 1000); // 24 horas en milisegundos
+        localStorage.setItem('countdownEndTime', endTime);
     }
     
-    if (minutes < 0) {
-        minutes = 59;
-        hours--;
-    }
-    
-    if (hours < 0) {
-        hours = 0;
-        minutes = 0;
-        seconds = 0;
-    }
-    
-    countdownEl.textContent = `Oferta válida por: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    
-    setTimeout(updateCountdown, 1000);
+    // Actualizar el contador cada segundo
+    const countdownInterval = setInterval(function() {
+        // Obtener la hora actual
+        now = new Date().getTime();
+        
+        // Calcular la diferencia entre la hora actual y la hora final
+        const distance = parseInt(endTime) - now;
+        
+        // Si el tiempo ha terminado
+        if (distance < 0) {
+            clearInterval(countdownInterval);
+            // Reiniciar el contador por 24 horas más
+            endTime = now + (3 * 60 * 60 * 1000);
+            localStorage.setItem('countdownEndTime', endTime);
+            startCountdown(); // Reiniciar la función
+            return;
+        }
+        
+        // Calcular horas, minutos y segundos
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        // Actualizar el texto del contador
+        countdownElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }, 1000);
 }
 
-// Iniciar el contador si existe en la página
+// Iniciar el contador cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
-    const countdownEl = document.querySelector('.countdown');
-    if (countdownEl) {
-        updateCountdown();
-    }
-});     
+    // Llamar a la función del contador
+    startCountdown();
+    
+    // El resto de tu código existente para DOMContentLoaded...
+});
+
