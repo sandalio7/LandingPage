@@ -1,125 +1,185 @@
-// Función para manejar el formulario de compra con Google Apps Script
-document.addEventListener('DOMContentLoaded', function() {
-    const comprarBtn = document.getElementById('comprar-btn');
+// Counter for tracking interest
+let interestCount = 243; // Starting with a fake number to show social proof
+
+// DOM Elements
+document.addEventListener('DOMContentLoaded', () => {
+    updateInterestCount();
     
-    if (comprarBtn) {
-        comprarBtn.addEventListener('click', function(e) {
-            e.preventDefault(); // Prevenir el comportamiento predeterminado del botón
-            
-            // Reemplaza esta URL con la URL de tu Web App de Google Apps Script después de publicarla
-            const googleAppScriptUrl = 'https://script.google.com/macros/s/AKfycbxrEBPKjmA8o8XMRAObSlITU5MJIzpfDnkpPlGBng50naJnvRMEher-cgKmA-lJo4y93A/exec';
-            
-            // URL de checkout actualizada con la URL completa
-            const checkoutURL = 'https://digitalcareer.netlify.app/checkout.html';
-            
-            // Recopilar datos para enviar
-            const datos = {
-                curso: 'Tech Career Blueprint',
-                fecha: new Date().toLocaleString(),
-                url_origen: window.location.href,
-                navegador: navigator.userAgent,
-            };
-            
-            // Mostrar un indicador de carga
-            comprarBtn.disabled = true;
-            comprarBtn.textContent = 'Procesando...';
-            
-            // Enviar los datos a Google Apps Script
-            fetch(googleAppScriptUrl, {
-                method: 'POST',
-                body: JSON.stringify(datos),
-                headers: {
-                    'Content-Type': 'text/plain;charset=utf-8',
-                },
-                mode: 'no-cors' // Importante para evitar problemas CORS
-            })
-            .then(function() {
-                console.log('Datos enviados correctamente');
-                
-                // Registrar el evento de clic en el botón para Google Ads (añadido)
-                if (typeof dataLayer !== 'undefined') {
-                    dataLayer.push({
-                        'event': 'purchase_button_click',
-                        'eventCategory': 'Conversion',
-                        'eventAction': 'Click',
-                        'eventLabel': 'Comprar Ahora'
-                    });
-                    console.log('Evento de clic registrado en dataLayer');
-                }
-                
-                // Redirigir a la página de checkout después de un breve retraso
-                setTimeout(function() {
-                    window.location.href = checkoutURL;
-                }, 300); // 300ms de retraso para asegurar que GTM registre el evento
-            })
-            .catch(function(error) {
-                console.error('Error al enviar los datos:', error);
-                // Aún así, registrar el evento y redirigir a la página de checkout
-                if (typeof dataLayer !== 'undefined') {
-                    dataLayer.push({
-                        'event': 'purchase_button_click',
-                        'eventCategory': 'Conversion',
-                        'eventAction': 'Click',
-                        'eventLabel': 'Comprar Ahora'
-                    });
-                }
-                setTimeout(function() {
-                    window.location.href = checkoutURL;
-                }, 300);
-            });
-        });
+    // Form submission listeners
+    const earlyAccessForm = document.getElementById('early-access-form');
+    if (earlyAccessForm) {
+        earlyAccessForm.addEventListener('submit', handleEarlyAccessSubmit);
     }
 });
 
-// Función para el temporizador
-function startCountdown() {
-    const countdownElement = document.getElementById('countdown-timer');
-    
-    if (!countdownElement) return;
-    
-    // Comprobar si hay una fecha guardada en localStorage
-    let endTime = localStorage.getItem('countdownEndTime');
-    let now = new Date().getTime();
-    
-    // Si no hay fecha guardada o ya ha pasado, creamos una nueva (24 horas desde ahora)
-    if (!endTime || now > parseInt(endTime)) {
-        endTime = now + (3 * 60 * 60 * 1000); // 24 horas en milisegundos
-        localStorage.setItem('countdownEndTime', endTime);
-    }
-    
-    // Actualizar el contador cada segundo
-    const countdownInterval = setInterval(function() {
-        // Obtener la hora actual
-        now = new Date().getTime();
-        
-        // Calcular la diferencia entre la hora actual y la hora final
-        const distance = parseInt(endTime) - now;
-        
-        // Si el tiempo ha terminado
-        if (distance < 0) {
-            clearInterval(countdownInterval);
-            // Reiniciar el contador por 24 horas más
-            endTime = now + (3 * 60 * 60 * 1000);
-            localStorage.setItem('countdownEndTime', endTime);
-            startCountdown(); // Reiniciar la función
-            return;
-        }
-        
-        // Calcular horas, minutos y segundos
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
-        // Actualizar el texto del contador
-        countdownElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    }, 1000);
+// Update interest count display
+function updateInterestCount() {
+    const countElements = document.querySelectorAll('#interest-count');
+    countElements.forEach(element => {
+        element.textContent = `(${interestCount})`;
+    });
 }
 
-// Iniciar el contador cuando se carga la página
-document.addEventListener('DOMContentLoaded', function() {
-    // Llamar a la función del contador
-    startCountdown();
+// Show early access modal
+function showEarlyAccessForm() {
+    const modal = document.getElementById('early-access-modal');
+    modal.style.display = 'flex';
     
-    // El resto de tu código existente para DOMContentLoaded...
+    // Add event listener to close modal when clicking outside
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+}
+
+// Close early access modal
+function closeModal() {
+    const modal = document.getElementById('early-access-modal');
+    modal.style.display = 'none';
+}
+
+// Handle early access form submission
+function handleEarlyAccessSubmit(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const interest = document.getElementById('interest').value;
+    
+    // In a real implementation, you would send this data to your backend
+    console.log('Early access submission:', { name, email, interest });
+    
+    // Store data in localStorage for demo purposes
+    const submissions = JSON.parse(localStorage.getItem('earlyAccessSubmissions') || '[]');
+    submissions.push({ name, email, interest, date: new Date().toISOString() });
+    localStorage.setItem('earlyAccessSubmissions', JSON.stringify(submissions));
+    
+    // Send to serverless function if implemented
+    sendToServerless({ name, email, interest, type: 'early-access' });
+    
+    // Reset form and close modal
+    document.getElementById('early-access-form').reset();
+    closeModal();
+    
+    // Show thank you message
+    alert('¡Gracias por tu interés! Te contactaremos pronto con más información sobre el acceso anticipado.');
+}
+
+// Register interest without early access
+function registerInterest() {
+    // Increment counter
+    interestCount++;
+    updateInterestCount();
+    
+    // Store in localStorage
+    localStorage.setItem('interestCount', interestCount);
+    
+    // Show interest modal
+    const modal = document.getElementById('interest-modal');
+    modal.style.display = 'flex';
+    
+    // Add event listener to close modal when clicking outside
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeInterestModal();
+        }
+    });
+}
+
+// Close interest modal
+function closeInterestModal() {
+    const modal = document.getElementById('interest-modal');
+    modal.style.display = 'none';
+}
+
+// Save interest email
+function saveInterestEmail() {
+    const email = document.getElementById('interest-email').value;
+    
+    if (!email) {
+        alert('Por favor, introduce tu email para mantenerte informado.');
+        return;
+    }
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Por favor, introduce un email válido.');
+        return;
+    }
+    
+    // Store in localStorage
+    const interestedEmails = JSON.parse(localStorage.getItem('interestedEmails') || '[]');
+    if (!interestedEmails.includes(email)) {
+        interestedEmails.push(email);
+        localStorage.setItem('interestedEmails', JSON.stringify(interestedEmails));
+    }
+    
+    // Send to serverless function if implemented
+    sendToServerless({ email, type: 'interest' });
+    
+    // Close modal
+    closeInterestModal();
+    
+    // Show thank you message
+    alert('¡Gracias! Te mantendremos informado sobre el lanzamiento de CursoIA.');
+}
+
+// Function to send data to serverless function
+// This would be replaced with actual fetch call in production
+async function sendToServerless(data) {
+    // In a real implementation, you would uncomment the following code:
+    /*
+    try {
+        const response = await fetch('/.netlify/functions/register-interest', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+        
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        
+        const result = await response.json();
+        console.log('Success:', result);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+    */
+    
+    // For now, just log the data
+    console.log('Data that would be sent to serverless function:', data);
+}
+
+// Animation on scroll
+window.addEventListener('scroll', () => {
+    const elements = document.querySelectorAll('.step, .feature, .case');
+    
+    elements.forEach(element => {
+        const position = element.getBoundingClientRect();
+        
+        // If element is in viewport
+        if (position.top < window.innerHeight && position.bottom >= 0) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        }
+    });
 });
 
+// Add initial animation styles
+document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.step, .feature, .case');
+    
+    elements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    
+    // Trigger scroll event initially to animate elements in view
+    window.dispatchEvent(new Event('scroll'));
+});

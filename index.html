@@ -1,323 +1,214 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-W87KD2TS');</script>
-    <!-- End Google Tag Manager -->
-   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Infoproducto - La Solución que Buscabas</title>
+    <title>CursoIA - Cursos personalizados con Inteligencia Artificial</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- En el <head> de tu HTML -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Aprende cualquier tema con cursos personalizados generados por IA adaptados a tu perfil y objetivos.">
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W87KD2TS"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <section class="hero">
-        <div class="container">
-            <h1>Encuentra tu carrera tecnologica!</h1>
-            <p>La solución definitiva para la dificultad de encontrar un trabajo en el mundo tecnológico sin experiencia previa. Diseñado para ayudarte a convertirte en un profesional de alto valor de manera rápida y efectiva.</p>
+    <header>
+        <nav>
+            <div class="logo">Curso<span>IA</span></div>
+            <div class="cta-button-small">
+                <button id="nav-interest-btn" onclick="registerInterest()">Me interesa</button>
+            </div>
+        </nav>
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Aprende a tu manera con cursos creados por IA</h1>
+                <p>Cursos personalizados generados al instante según tus conocimientos, perfil y objetivos</p>
+                <div class="cta-buttons">
+                    <button id="main-interest-btn" onclick="registerInterest()">Me interesa <span id="interest-count">(243)</span></button>
+                    <button id="early-access-btn" onclick="showEarlyAccessForm()">Acceso anticipado</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/hero-image.svg" alt="Ilustración de aprendizaje con IA">
+            </div>
         </div>
-    </section>
-    
-    <!-- Product Section -->
-    <section id="product">
-        <div class="container">
-            <div class="product">
-                <div class="product-info">
-                    <h2>Transforma tu Carrera Profesional en Tecnología con nuestra metodologia probada</h2>
-                    <p>Descubre cómo transformar completamente tu trayectoria profesional, sin importar tu punto de partida. Diseñado para profesionales que buscan una transición estratégica hacia el mundo tecnológico. podrás:</p>
-                    <ul class="submodule-list">
-                        <li>Eliminar la barrera de experiencia para trabajos, sin necesidad de títulos universitales tradicionales</li>
+    </header>
 
-                        <li>Desarrollar un roadmap (mapa de estudio) personalizado que te lleve de principiante a profesional empleable en poco tiempo</li>
+    <main>
+        <section class="how-it-works">
+            <h2>¿Cómo funciona?</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>1. Elige un tema</h3>
+                    <p>Indica qué tema quieres aprender, desde programación hasta marketing digital o historia.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>2. Describe tu perfil</h3>
+                    <p>Comparte tus conocimientos actuales y necesidades específicas para personalizar el curso.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>3. Define tu objetivo</h3>
+                    <p>Establece qué quieres conseguir con el curso para enfocar el contenido a tus metas.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>4. Genera tu curso</h3>
+                    <p>Recibe un curso estructurado en módulos con evaluaciones y proyectos prácticos.</p>
+                </div>
+            </div>
+        </section>
 
-                        <li>Diferenciarte en el mercado laboral con un portfolio competitivo, que evidencie tus conocimientos</li>
-                    </ul>
-                    <p>Construido con la asesoría de profesionales especializados en desarrollo de carreras tecnológicas de empresas</p>
+        <section class="demo">
+            <h2>¿Qué obtendrás?</h2>
+            <div class="demo-content">
+                <div class="demo-features">
+                    <div class="feature">
+                        <i class="fas fa-th-large"></i>
+                        <div class="feature-text">
+                            <h3>Módulos estructurados</h3>
+                            <p>Contenido organizado en secciones lógicas y progresivas</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-tasks"></i>
+                        <div class="feature-text">
+                            <h3>Tests de autoevaluación</h3>
+                            <p>Comprueba tu comprensión al final de cada subtema</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-laptop-code"></i>
+                        <div class="feature-text">
+                            <h3>Proyectos prácticos</h3>
+                            <p>Aplica lo aprendido en ejercicios reales (para temas técnicos)</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-brain"></i>
+                        <div class="feature-text">
+                            <h3>IA adaptativa</h3>
+                            <p>Contenido que se ajusta a tu nivel y objetivos</p>
+                        </div>
+                    </div>
                 </div>
-                <video class="video" controls>
-                    <source src="./Comienza tu carrera profesional ahora.mp4" type="video/mp4">
-                    <source src="./Comienza tu carrera profesional ahora.mp4" type="video/webm">
-                    
-                  </video>
+                <div class="demo-screenshot">
+                    <img src="images/course-demo.svg" alt="Ejemplo de un curso generado por IA">
+                </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Details Section -->
-    <section id="details" class="details">
-        <div class="container">
-            <h2>Todo lo que incluye el curso</h2>
-            <p>Un sistema completo diseñado para llevarte desde estudiante principiante hasta una carrera profesional en tecnologia</p>
-            <!-- Reemplaza la sección del video actual con esta -->
-<div class="video-container">
-    <video class="video-grande" controls>
-        <source src="./Contenidos del curso.mp4" type="video/mp4">
-        <source src="./Contenidos del curso.mp4" type="video/webm">
-        <!-- Mensaje para navegadores que no soportan video -->
-        Tu navegador no soporta la etiqueta de video.
-    </video>
-</div>
-            <div class="features">
-                <div class="feature">
-                    <h3>Modulo introductorio</h3>
+        </section>
 
-                    <div class="module-content">
-                        <h4>Fijar posicion laboral</h4>
-                        <ul class="module-list">
-                            <li>Autoconocimiento profesional</li>
-                            <li>Analisis de tendencias en posiciones laborales</li>
-                            <li>Seleccion del trabajo objetivo</li>
-                            <li>Ruta personalizada (roadmap) con tiempos, salarios y oportunidades</li>
-                            <li>Encuentra tu objetivo y prepara el camino para conseguirlo</li>
-                        </ul>
-                    </div>
+        <section class="use-cases">
+            <h2>Ideal para aprender...</h2>
+            <div class="cases-grid">
+                <div class="case">
+                    <i class="fas fa-code"></i>
+                    <h3>Programación</h3>
+                    <p>Python, JavaScript, React, Docker, y más</p>
                 </div>
-                <div class="feature">
-                    <h3>Módulo 1: Arquitectura de Carrera</h3>
-                    <div class="module-content">
-                        <h4>Crear un plan </h4>
-                        <ul class="module-list">
-                            <li>Arquitectura de Carrera</li>
-                            <li>Descomposición en pasos de todos los conocimientos y habilidades requeridos</li>
-                            <li>Identificación de:
-                                <ul class="submodule-list">
-                                    <li>Competencias técnicas necesarias</li>
-                                    <li>Ruta de aprendizaje paso a paso </li>
-                                    <li>Proyectos prácticos de implementación</li>
-                                </ul>
-                            </li>
-                            <li>Métodos para superar los obstáculos más comunes</li>
-                            
-                        </ul>
-                    </div>
+                <div class="case">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Marketing Digital</h3>
+                    <p>SEO, redes sociales, email marketing</p>
                 </div>
-                <div class="feature">
-                    <h3>Módulo 2: Arquitectura de Portfolio</h3>
-                    <div class="module-content">
-                        <h4>Construir un portfolio</h4>
-                        <ul class="module-list">
-                            
-                            <li>Metodología de documentación estratégica</li>
-                            <li>Construcción de un portafolio que contendra:
-                                <ul class="submodule-list">
-                                    
-                                    <li>Evidencia tangible de tu desarrollo</li>
-                                    <li>Registro detallado de proyectos</li>
-                                    <li>Valida tus conocimientos y competencias</li>
-                                    <li>Convierte cada habilidad en evidencia de tu crecimiento</li>
-                                </ul>
-                            </li>
-                            Bonus: Utilizar la IA para solucionar obstaculos recurrentes
-                        </ul>
-                    </div>
+                <div class="case">
+                    <i class="fas fa-language"></i>
+                    <h3>Idiomas</h3>
+                    <p>Inglés, francés, alemán y otros</p>
                 </div>
-                <div class="feature">
-                    <h3>Modulo 3: Preparar CV</h3>
-                    <div class="module-content">
-                        <h4>Construye tu Curriculum</h4>
-                        <ul class="module-list">
-                            <li>Metodología de construcción de CV estratégico</li>
-                            <li>Diseño de perfil profesional</li>
-                            <li>Narrativa profesional poderosa</li>
-                            <li>Plantillas de Curriculum:</li>
-                            <ul class="submodule-list">
-                                <li>Optimizadas para ATS (Applicant Tracking Systems)</li>
-                                <li>Guía de adaptación</li>
-                                <li>Ejemplos de implementación</li>
-                            </ul>
-                        </ul>
-                    </div>
+                <div class="case">
+                    <i class="fas fa-palette"></i>
+                    <h3>Diseño</h3>
+                    <p>UI/UX, diseño gráfico, Figma</p>
                 </div>
-                <div class="feature">
-                    <h3>Modulo 4: Busqueda laboral</h3>
-                    <div class="module-content">
-                        <h4>Encontrar vacantes</h4>
-                        <ul class="module-list">
-                            <li>Identificación de oportunidades</li>
-                            <li>Preparación para procesos de selección</li>
-                            <li>Estrategias de contacto con empresas</li>
-                            <li>Técnicas de postulación efectiva</li>
-                        </ul>
-                    </div>
+                <div class="case">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Ciencias</h3>
+                    <p>Matemáticas, física, estadística</p>
                 </div>
-                
-            </div>
-            
-            
-            <!-- Nueva sección de problemáticas -->
-            <div class="problems-section">
-                <h2>Problemáticas que resolverás con este curso</h2>
-                <div class="problems-container">
-                    <div class="problem-item">
-                        <div class="problem-icon" style="background-color: #4DB6AC;">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <div class="problem-content">
-                            <h3>Indecisión profesional</h3>
-                            <p>Supera la parálisis por análisis y la confusión sobre qué dirección tomar en tu carrera profesional.</p>
-                        </div>
-                    </div>
-                    <div class="problem-item">
-                        <div class="problem-icon" style="background-color: #FF7043;">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="problem-content">
-                            <h3>Estancamiento salarial</h3>
-                            <p>Rompe el techo salarial que te impide alcanzar el nivel de ingresos que mereces por tus habilidades.</p>
-                        </div>
-                    </div>
-                    <div class="problem-item">
-                        <div class="problem-icon" style="background-color: #81D4FA;">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="problem-content">
-                            <h3>Procrastinación y falta de dirección</h3>
-                            <p>Elimina los hábitos que te sabotean y aprende a crear un plan de acción efectivo para avanzar sistemáticamente.</p>
-                        </div>
-                    </div>
-                    <div class="problem-item problem-item-centered">
-                        <div class="problem-icon" style="background-color: #9CCC65;">
-                            <i class="fas fa-eye"></i>
-                        </div>
-                        <div class="problem-content">
-                            <h3>Baja visibilidad profesional</h3>
-                            <p>Aprende a destacar en un mercado competitivo y a posicionarte como un profesional valioso en tu sector.</p>
-                        </div>
-                    </div>
+                <div class="case">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Habilidades profesionales</h3>
+                    <p>Liderazgo, gestión del tiempo, ventas</p>
                 </div>
             </div>
+        </section>
 
+        <section class="cta">
+            <h2>Sé de los primeros en probarlo</h2>
+            <p>Regístrate para acceso anticipado y obtén un <strong>50% de descuento</strong> durante el primer año</p>
+            <button id="cta-interest-btn" onclick="showEarlyAccessForm()">Quiero acceso anticipado</button>
+        </section>
+    </main>
 
-            
-            <!-- Nueva sección de beneficios -->
-            <div class="benefits-section">
-                <h2>Beneficios que obtendrás</h2>
-                <div class="benefits-container">
-                    <div class="benefit-item">
-                        <div class="benefit-icon"><i class="fas fa-compass"></i></div>
-                        <h3>Claridad y dirección profesional</h3>
-                        <p>Establece un rumbo claro para tu carrera con objetivos precisos y alcanzables.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon"><i class="fas fa-clipboard-list"></i></div>
-                        <h3>Sistema de planificación eficaz</h3>
-                        <p>Implementa un método probado para convertir tus metas en acciones concretas día a día.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
-                        <h3>Mayor confianza y seguridad</h3>
-                        <p>Desarrolla la confianza que necesitas para tomar decisiones estratégicas y afrontar nuevos retos.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon"><i class="fas fa-rocket"></i></div>
-                        <h3>Aceleración de resultados</h3>
-                        <p>Reduce drásticamente el tiempo necesario para alcanzar tus metas profesionales.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon"><i class="fas fa-users"></i></div>
-                        <h3>Red de apoyo profesional</h3>
-                        <p>Conecta con otros profesionales que están en un camino similar y aprende de experiencias compartidas.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon"><i class="fas fa-tools"></i></div>
-                        <h3>Herramientas prácticas y aplicables</h3>
-                        <p>Obtén recursos listos para usar que podrás implementar inmediatamente en tu día a día profesional.</p>
-                    </div>
+    <div id="early-access-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Acceso Anticipado</h2>
+            <p>Regístrate para ser de los primeros en probar CursoIA y recibir un 50% de descuento durante el primer año.</p>
+            <form id="early-access-form">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" required>
                 </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Hook Section -->
-    <section id="hook" class="hook">
-        <div class="container">
-            <h2>¿Por qué seguir luchando con la falta de oportunidades tecnológicas cuando puedes transformar tu carrera?</h2>
-            <p>Más de 200 profesionales ya han logrado su transición al mundo tech con nuestro sistema.</p>
-            
-            <div class="testimonials">
-                <div class="testimonial">
-                    <p>"Gracias a Digital Career, pasé de aplicar a trabajos todos los dias durante meses sin obtener resultados, a conseguir mi primer trabajo como desarrollador frontend en solo 5 meses. El sistema me dio la claridad y las herramientas que necesitaba."</p>
-                    <p><strong>- Carlos Martínez, Desarrollador Frontend</strong></p>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
-                <div class="testimonial">
-                    <p>"Nunca creí que podría cambiar de carrera sin volver a la universidad. Este programa me mostró que con la estrategia correcta, cualquiera puede convertirse en un profesional. Consegui mi trabajo en solo 3 meses, fue increible, muchas gracias Digital Career!
-                    <p><strong>- Tomas Silvetti, Entrenador de IA</strong></p>
+                <div class="form-group">
+                    <label for="interest">¿Qué temas te interesan más?</label>
+                    <input type="text" id="interest" name="interest">
                 </div>
-            </div>
+                <button type="submit">Enviar solicitud</button>
+            </form>
         </div>
-    </section>
-    
-   <!-- Buy Section -->
-<section id="buy" class="buy">
-    <div class="container">
-        <h2 id="h2-compra">¡¡Ahorra en la compra del curso!!</h2>
-        
-        <h2>Con la compra de un curso, EL SEGUNDO TIENE UN</h2>
-        <p id="verde" class="big-discount">75% OFF</p>
-        
-        <h3 class="share-text">Toma el teléfono y escribe a algún amigo :), no desaproveches esta oportunidad</h3>
-        
-        <!-- Temporizador -->
-        <div class="countdown-container">
-            <div class="countdown-label">La oferta termina en:</div>
-            <div id="countdown-timer" class="countdown">23:59:59</div>
-        </div>
-        
-        <!-- Garantía y detalles -->
-        <div class="purchase-details">
-            <div class="guarantee">
-                <i class="fas fa-shield-alt"></i>
-                <p>Garantía de satisfacción de 30 días o te devolvemos tu dinero</p>
-            </div>
-            
-            <p>Luego de la compra te pediremos una dirección de correo para que enviemos los contenidos</p>
-            <p>Acceso completo a todos los módulos y herramientas exclusivos.</p>
-        </div>
-        
-        <!-- Precios -->
-        <div class="price-container">
-            <span class="original-price">$99 USD</span>
-            <div class="discount-badge">¡40% OFF!</div>
-            <div class="price">$49</div>
-            <p>Pago único - Sin cargos ocultos</p>
-        </div>
-        
-        <!-- Botón de compra -->
-        <button type="button" class="btn cta-btn" id="comprar-btn">COMPRAR AHORA</button>
-        
-        <!-- Métodos de pago -->
-        <div class="payment-info">
-            <p><i class="fas fa-lock"></i> Pago seguro</p>
-            <div class="payment-methods">
-                <i class="fab fa-cc-visa"></i>
-                <i class="fab fa-cc-mastercard"></i>
-                <i class="fab fa-cc-amex"></i>
-                <i class="fab fa-paypal"></i>
+    </div>
+
+    <div id="interest-modal" class="modal">
+        <div class="modal-content interest-content">
+            <span class="close-modal" onclick="closeInterestModal()">&times;</span>
+            <div class="interest-confirmation">
+                <i class="fas fa-check-circle"></i>
+                <h2>¡Gracias por tu interés!</h2>
+                <p>Te notificaremos cuando CursoIA esté disponible.</p>
+                <div class="form-group">
+                    <label for="interest-email">Déjanos tu email para mantenerte informado</label>
+                    <input type="email" id="interest-email" name="interest-email" required>
+                </div>
+                <button onclick="saveInterestEmail()">Guardar</button>
             </div>
         </div>
     </div>
-</section>
-    
-    <!-- Footer -->
+
     <footer>
-        <div class="container">
-            <p>© 2025 digitalCareer. Todos los derechos reservados.</p>
-           
+        <div class="footer-content">
+            <div class="footer-logo">
+                Curso<span>IA</span>
+            </div>
+            <div class="footer-links">
+                <a href="#">Inicio</a>
+                <a href="#">Sobre nosotros</a>
+                <a href="#">Política de privacidad</a>
+                <a href="#">Contacto</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 CursoIA. Todos los derechos reservados.
         </div>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
